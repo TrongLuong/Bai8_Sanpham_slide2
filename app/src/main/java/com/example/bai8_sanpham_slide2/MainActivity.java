@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     CustomAdapter customAdapter;
     ArrayList<SanPham> arrList;
+    int selectedposition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         listViewSP.setAdapter(customAdapter);
         //dd context menu
         registerForContextMenu(listViewSP);
+
+        listViewSP.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedposition = i;
+                return false;
+            }
+        });
     }
 
     @Override
@@ -59,20 +70,35 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_sua);
                 break;
             case R.id.xoasp:
-
-
-                dialog();
-
+                dialogg();
 
 
                 break;
         }
         return super.onContextItemSelected(item);
     }
-    private void dialog(){
-        Dialog dialog = new Dialog(this);
+
+    private void dialogg() {
+        final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.custom_dialog);
         dialog.show();
+        Button xoa = dialog.findViewById(R.id.btnxoa);
+        Button dong = dialog.findViewById(R.id.btnclose);
+       xoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrList.remove(selectedposition);
+               listViewSP.setAdapter(customAdapter);
+                dialog.dismiss();
+
+            }
+        });
+        dong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 
     @Override
@@ -85,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             listViewSP.setAdapter(customAdapter);
 
         }
-
 
 
     }
