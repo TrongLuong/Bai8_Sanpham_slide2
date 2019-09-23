@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:title="Xem chi tiet san pham"
+    android:id="@+id/xemct">
+    </item>
+    <item
+
+        android:title="Them san pham"
+        android:id="@+id/themsp">
+
+
+    </item>
+    <item
+        android:title="Sua san pham"
+        android:id="@+id/suasp">
+
+    </item>
+    <item
+        android:title="Xoa san pham"
+        android:id="@+id/xoasp">
+
+    </item>
+
+</menu>
