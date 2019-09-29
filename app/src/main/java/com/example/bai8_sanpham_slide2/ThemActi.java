@@ -25,12 +25,14 @@ public class ThemActi extends AppCompatActivity {
                 ma=findViewById(R.id.edt_masp);
                 ten=findViewById(R.id.edt_tensp);
                 ncc=findViewById(R.id.edt_ncc);
+
                 String mid = ma.getText().toString();
                 String t = ten.getText().toString();
                 String n = ncc.getText().toString();
                 SanPham sp = new SanPham(mid,t,n);
 
                 Intent intent = getIntent();
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("sp",sp);
                 intent.putExtra("obj",bundle);

@@ -6,6 +6,7 @@ public class SanPham implements Serializable {
     private  String maSp;
     private  String tenSP;
     private  String nccSP;
+    private int imgSP;
 
     public  SanPham(){}
     public SanPham(String maSp, String tenSP, String nccSP) {
@@ -21,6 +22,14 @@ public class SanPham implements Serializable {
                 ", tenSP='" + tenSP + '\'' +
                 ", nccSP='" + nccSP + '\'' +
                 '}';
+    }
+
+    public int getImgSP() {
+        return imgSP;
+    }
+
+    public void setImgSP(int imgSP) {
+        this.imgSP = imgSP;
     }
 
     public String getMaSp() {

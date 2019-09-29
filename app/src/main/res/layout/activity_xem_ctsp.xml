@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16sp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="THÔNG TIN SẢN PHẨM"
+        android:textSize="25sp">
+
+    </TextView>
+    <TextView
+        android:textSize="20sp"
+        android:text="ID sp: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIDc">
+
+    </TextView>
+    <TextView
+        android:textSize="20sp"
+        android:text="Tên sp: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTenc">
+
+    </TextView><TextView
+    android:textSize="20sp"
+    android:text="NCC sp: "
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/txtNCCc">
+
+</TextView>
+
+
+
+</LinearLayout>

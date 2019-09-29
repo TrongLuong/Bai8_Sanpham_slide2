@@ -7,7 +7,7 @@
         android:textSize="35sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ban co muon xoa">
+        android:text="Bạn có muốn xóa ?">
 
     </TextView>
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:text="xoa"
+            android:text="Xóa"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
 
         </Button>
         <Button
-            android:text="dong"
+            android:text="không"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

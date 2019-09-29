@@ -34,6 +34,8 @@ public class CustomAdapter extends ArrayAdapter<SanPham> {
         TextView txtma = convertView.findViewById(R.id.txtmasp);
         TextView txtten = convertView.findViewById(R.id.txttensp);
         TextView txtncc = convertView.findViewById(R.id.txtnccsp);
+
+
         SanPham sp = arrayListSP.get(position);
 
         txtma.setText(sp.getMaSp());

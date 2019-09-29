@@ -17,7 +17,8 @@
             android:layout_weight="7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mã Sp:">
+            android:text="Mã Sp:"
+            android:id="@+id/ms">
 
         </TextView>
         <EditText
@@ -25,7 +26,7 @@
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_masp">
+            android:id="@+id/edt_masps">
         </EditText>
     </LinearLayout>
     <LinearLayout
@@ -45,7 +46,7 @@
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_tensp">
+            android:id="@+id/edt_tensps">
         </EditText>
     </LinearLayout>
     <LinearLayout
@@ -65,7 +66,7 @@
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_ncc">
+            android:id="@+id/edt_nccs">
         </EditText>
     </LinearLayout>
     <LinearLayout
@@ -73,7 +74,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-
+            android:id="@+id/btnluu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="25sp"
