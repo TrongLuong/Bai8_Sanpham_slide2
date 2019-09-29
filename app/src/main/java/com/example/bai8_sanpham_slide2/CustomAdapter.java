@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,13 +35,18 @@ public class CustomAdapter extends ArrayAdapter<SanPham> {
         TextView txtma = convertView.findViewById(R.id.txtmasp);
         TextView txtten = convertView.findViewById(R.id.txttensp);
         TextView txtncc = convertView.findViewById(R.id.txtnccsp);
+        CheckBox cbxoa = convertView.findViewById(R.id.cbxoa);
 
 
-        SanPham sp = arrayListSP.get(position);
+        sp = arrayListSP.get(position);
 
         txtma.setText(sp.getMaSp());
         txtten.setText(sp.getTenSP());
         txtncc.setText(sp.getNccSP());
+        cbxoa.setChecked(false);
+
+
+
         return convertView;
     }
     //

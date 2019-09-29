@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +22,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView listViewSP;
-
     CustomAdapter customAdapter;
     ArrayList<SanPham> arrList;
     Dialog dialog;
     int selectedposition = 0;
     private Intent intent;
+    private CheckBox checkBox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         listViewSP = findViewById(R.id.livSP);
         arrList = new ArrayList<>();
         arrList.add(new SanPham("111", "Lúa", "chu 1"));
@@ -45,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         listViewSP.setAdapter(customAdapter);
         //dd context menu
         registerForContextMenu(listViewSP);
-
         listViewSP.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -53,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,9 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.xemct:
-                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Xem!", Toast.LENGTH_SHORT).show();
+
+
+                        Toast.makeText(MainActivity.this, "Xem trên ListView kìa!", Toast.LENGTH_SHORT).show();
+
+
                 break;
             case R.id.themsp:
                 Intent intent = new Intent(MainActivity.this, ThemActi.class);
@@ -73,11 +82,23 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.suasp:
-                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Sửa!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Chọn sửa trên ListView kìa!", Toast.LENGTH_SHORT).show();
+
+
                 break;
 
             case R.id.xoasp:
-                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Xóa!", Toast.LENGTH_SHORT).show();
+                for (int i = listViewSP.getChildCount() - 1; i >= 0; i--) {
+                    View v = listViewSP.getChildAt(i);
+                    checkBox = v.findViewById(R.id.cbxoa);
+                    if (checkBox.isChecked()) {
+                        arrList.remove(i);
+                        Toast.makeText(MainActivity.this, "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Hãy chọn SP cần Xóa!", Toast.LENGTH_SHORT).show();
+                    }
+                    customAdapter.notifyDataSetChanged();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -115,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.xoasp:
                 dialogg();
+
 
                 break;
         }

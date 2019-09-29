@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    android:descendantFocusability="blocksDescendants"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_margin="16dp"
         android:orientation="horizontal"
@@ -17,9 +20,10 @@
 
         </ImageView>
         <LinearLayout
+            android:layout_weight="1"
             android:layout_marginLeft="16sp"
             android:gravity="center_vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -39,7 +43,8 @@
             android:id="@+id/txttensp">
 
         </TextView>
-        <TextView
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NCC sp: "
@@ -47,7 +52,21 @@
 
         </TextView>
 
+
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <CheckBox
+
+
+                android:id="@+id/cbxoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false">
+
+            </CheckBox>
+        </LinearLayout>
 
 
 

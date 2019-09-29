@@ -37,12 +37,12 @@ public class SuaSP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = getIntent();
+
                 //gửi
                 String i = edtid.getText().toString();
                 String t = edtten.getText().toString();
                 String n = edtncc.getText().toString();
-
+                Intent intent = getIntent();
                 SanPham sps = new SanPham(i, t, n);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("sps", sps);
