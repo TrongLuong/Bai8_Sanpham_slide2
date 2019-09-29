@@ -32,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listViewSP = findViewById(R.id.livSP);
         arrList = new ArrayList<>();
-        arrList.add(new SanPham("111", "Lua", "chu 1"));
-        arrList.add(new SanPham("222", "Mi", "chu 2"));
+        arrList.add(new SanPham("111", "Lúa", "chu 1"));
+        arrList.add(new SanPham("222", "Mì", "chu 2"));
         arrList.add(new SanPham("333", "Ổi", "chu 3"));
+        arrList.add(new SanPham("444", "Mít", "chu 4"));
+        arrList.add(new SanPham("555", "Chuối", "chu 5"));
+        arrList.add(new SanPham("666", "Táo", "chu 6"));
+        arrList.add(new SanPham("777", "Xoài", "chu 7"));
         customAdapter = new CustomAdapter(this, R.layout.activity_items, arrList);
         listViewSP.setAdapter(customAdapter);
         //dd context menu
@@ -68,7 +72,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.suasp:
-                suaSP();
+                Intent intent1 = new Intent(MainActivity.this, SuaSP.class);
+                String id = arrList.get(selectedposition).getMaSp();
+                String ten = arrList.get(selectedposition).getTenSP();
+                String ncc = arrList.get(selectedposition).getNccSP();
+                SanPham sps = new SanPham(id, ten, ncc);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("sps", sps);
+                intent1.putExtra("objs", bundle);
+                startActivityForResult(intent1,1001);
+
                 break;
             case R.id.xoasp:
                 dialogg();
@@ -116,21 +129,6 @@ public class MainActivity extends AppCompatActivity {
         txtncc.setText(txtncc.getText() + ncc);
     }
 
-    private void suaSP() {
-        Intent intent = new Intent(MainActivity.this, SuaSP.class);
-        String id = arrList.get(selectedposition).getMaSp();
-        String ten = arrList.get(selectedposition).getTenSP();
-        String ncc = arrList.get(selectedposition).getNccSP();
-        SanPham sps = new SanPham(id, ten, ncc);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("sps", sps);
-        intent.putExtra("objs", bundle);
-        startActivity(intent);
-        finish();
-
-
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -141,10 +139,9 @@ public class MainActivity extends AppCompatActivity {
             arrList.add(sp);
             listViewSP.setAdapter(customAdapter);
 
-        }
-        else if (resultCode == 1001) {
-            Bundle bundle = data.getBundleExtra("objss");
-            SanPham sp = (SanPham) bundle.getSerializable("spss");
+        }if (resultCode == 1001) {
+            Bundle bundle = data.getBundleExtra("objs");
+            SanPham sp = (SanPham) bundle.getSerializable("sps");
             arrList.remove(selectedposition);
             arrList.add(sp);
             listViewSP.setAdapter(customAdapter);
