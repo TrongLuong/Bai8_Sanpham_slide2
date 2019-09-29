@@ -4,12 +4,14 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,6 +56,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_context, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.xemct:
+                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Xem!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.themsp:
+                Intent intent = new Intent(MainActivity.this, ThemActi.class);
+                startActivityForResult(intent, 1000);
+                break;
+
+            case R.id.suasp:
+                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Sửa!", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.xoasp:
+                Toast.makeText(MainActivity.this, "Hãy chọn SP cần Xóa!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         getMenuInflater().inflate(R.menu.menu_context, menu);
         menu.setHeaderTitle("Chọn tác vụ!");
@@ -80,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("sps", sps);
                 intent1.putExtra("objs", bundle);
-                startActivityForResult(intent1,1001);
+                startActivityForResult(intent1, 1001);
 
                 break;
             case R.id.xoasp:
@@ -138,12 +168,13 @@ public class MainActivity extends AppCompatActivity {
             SanPham sp = (SanPham) bundle.getSerializable("sp");
             arrList.add(sp);
             listViewSP.setAdapter(customAdapter);
-
-        }if (resultCode == 1001) {
+        }
+        if (resultCode == 1001) {
             Bundle bundle = data.getBundleExtra("objs");
             SanPham sp = (SanPham) bundle.getSerializable("sps");
-            arrList.remove(selectedposition);
-            arrList.add(sp);
+            arrList.get(selectedposition).setMaSp(sp.getMaSp());
+            arrList.get(selectedposition).setTenSP(sp.getTenSP());
+            arrList.get(selectedposition).setNccSP(sp.getNccSP());
             listViewSP.setAdapter(customAdapter);
 
         }
